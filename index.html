@@ -2,360 +2,264 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Halcyon Days - An Exclusive Freebie for Codrops</title>
-		<link
-			href="http://fonts.googleapis.com/css?family=Varela+Round"
-			rel="stylesheet"
-			type="text/css"
+		<meta
+			name="google-site-verification"
+			content="i3bVXD3ywVilJt3b0Denbr2n41les3p8ciIldduw4X0"
 		/>
-		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<title>Kill Kim</title>
 		<link
-			href="https://cdn.staticfile.org/font-awesome/4.1.0/css/font-awesome.min.css"
-			rel="stylesheet"
+			rel="icon"
+			type="image/x-icon"
+			href="http://haiyong.site/wp-content/uploads/2021/07/cropped-59255587-1-192x192.jpg"
 		/>
-		<link href="css/flexslider.css" rel="stylesheet" />
-		<link href="css/styles.css" rel="stylesheet" />
-		<link href="css/queries.css" rel="stylesheet" />
-		<link href="css/animate.css" rel="stylesheet" />
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
+		<meta name="keywords" content="杀死国王" />
+		<meta
+			name="description"
+			content="杀死国王——游戏——海拥;立志打造一个拥有100个小游戏的摸鱼网站。Made By Haiyong，技术支持——海拥"
+		/>
+		<meta name="author" content="海拥(http://haiyong.site)" />
+		<meta name="copyright" content="海拥(http://haiyong.site)" />
+		<link rel="stylesheet" href="css/style.css" />
 	</head>
-	<body id="top">
-		<header id="home">
-			<nav>
-				<div class="container-fluid">
-					<div class="row">
-						<div
-							class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2"
-						>
-							<nav class="pull">
-								<ul class="top-nav">
-									<li>
-										<a href="#intro"
-											>Introduction
-											<span class="indicator"
-												><i class="fa fa-angle-right"></i></span
-										></a>
-									</li>
-									<li>
-										<a href="#features"
-											>Features
-											<span class="indicator"
-												><i class="fa fa-angle-right"></i></span
-										></a>
-									</li>
-									<li>
-										<a href="#responsive"
-											>Responsive Design
-											<span class="indicator"
-												><i class="fa fa-angle-right"></i></span
-										></a>
-									</li>
-									<li>
-										<a href="#portfolio"
-											>Portfolio
-											<span class="indicator"
-												><i class="fa fa-angle-right"></i></span
-										></a>
-									</li>
-									<li>
-										<a href="#team"
-											>Team
-											<span class="indicator"
-												><i class="fa fa-angle-right"></i></span
-										></a>
-									</li>
-									<li>
-										<a href="#contact"
-											>Get in Touch
-											<span class="indicator"
-												><i class="fa fa-angle-right"></i></span
-										></a>
-									</li>
-								</ul>
-							</nav>
-						</div>
+	<body>
+		<div :class="{'pressed': pressed}" id="app">
+			<audio controls="" crossorigin="anonymous" style="display: none">
+				<source
+					src="https://assets.codepen.io/217233/ktkBgAudio.mp3"
+					type="audio/mp3"
+				/>
+			</audio>
+			<div class="game">
+				<div :class="{'show': gameover}" class="game_lose">
+					<div class="inner">
+						<h1>你没时间了！</h1>
+						<p>特罗斯特国王获胜,刷新以重试。</p>
+						<p>
+							你可以
+							<a href="https://github.com/wanghao221/moyu/"
+								>在 Github 上关注我</a
+							>
+							获取更多好玩的游戏
+						</p>
 					</div>
 				</div>
-			</nav>
-			<section class="hero" id="hero">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12 text-right navicon">
-							<a id="nav-toggle" class="nav_slide_button" href="#"
-								><span></span
-							></a>
-						</div>
+				<div :class="{'show': gamewin}" class="game_win">
+					<div class="inner">
+						<h1>你赢了！</h1>
+						<p>特罗斯特国王被杀,恭喜！</p>
+						<p>
+							你可以
+							<a href="https://github.com/wanghao221/moyu/"
+								>在 Github 上关注我</a
+							>
+							获取更多好玩的游戏
+						</p>
 					</div>
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2 text-center inner">
-							<h1 class="animated fadeInDown">德尚</h1>
-							<p class="animated fadeInUp delay-05s">
-								德尚2023年4月4日成立， <em>注册资金900万日元。</em>
+				</div>
+				<div :class="{'gamestarted': gameStarted}" class="game_intro">
+					<div
+						:class="{'gamestarted': introClicked}"
+						class="game_intro__inner start"
+					>
+						<img src="https://assets.codepen.io/217233/ktkLogo.png" />
+						<br />
+						<p
+							@click='introClicked = !introClicked, audioController.play("crushyou")'
+							class="begin"
+						>
+							BEGIN GAME
+						</p>
+					</div>
+					<div
+						:class="{'gamestarted': !introClicked}"
+						class="game_intro__inner end"
+					>
+						<div class="dialogue">
+							<span>特罗斯特王</span>
+							<p>哈哈哈，你真的以为你能打败我！？ 我的人会粉碎你，小屁孩。</p>
+							<p
+								@click="introClicked = !introClicked, startGame()"
+								class="continue"
+							>
+								Continue
 							</p>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 text-center">
-							<a href="#" class="learn-more-btn">Back to the article</a>
-						</div>
-					</div>
-				</div>
-			</section>
-		</header>
-		<section class="intro text-center section-padding" id="intro">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 wp1">
-						<h1 class="arrow">公司简历：</h1>
-						<p>
-							公司总经理姚
-							海霞，1962年生，2003年出差的机会第一次来到日本，被日本文化深深吸引，开始自学日语，2005年进入日企至2020年退休。
-							为了更深刻地学习理解日本历史及文化，学到纯正的日语2022年6月作为留学生来到了东京都市日本语学校，能来日本留学对我而言是非常开心的一件事，班上的同学大多是20岁上下的年轻人，和年轻人一起学习活力无限。我的出勤率、学习成绩都名列前茅。
-							一年的学习过程让我产生了很多想法，以我个人的留学经历，得到了东京都日本语学校的委任状，负责中国国内留学生招生工作。欢迎和我一样对日本文化感兴趣的朋友，无论年龄大小想来日本留学就联系我们。
-							跨越语言的障碍，一年间结交了许多日本朋友。发现大家对中国文化也非常感兴趣，很多人学中文的过程中会话的4声发音无法掌握。这让我产生了开设中文会话教室教授会话的同时介绍中国文化。帮助学习中文的日本朋友尽快掌握基本日常用语。有兴趣的留学生可以来我的中文会话教室任教哦
-						</p>
-						<div style="display: flex">
-							<div class="img2"></div>
-							<div class="img3"></div>
-						</div>
+						<img
+							class="king"
+							src="https://assets.codepen.io/217233/kingTrost.png"
+						/>
 					</div>
 				</div>
-			</div>
-		</section>
-		<section class="features text-center section-padding" id="features">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h1 class="arrow">主营业务：</h1>
-						<div class="features-wrapper">
-							<div class="col-md-4 wp2">
-								<div class="icon">
-									<i class="fa fa-book shadow"></i>
+				<div class="game_inner">
+					<div class="game_inner__footer">
+						<div class="madeby">
+							Made by
+							<a href="http://haiyong.site" target="_blank">Hai Yong</a>
+						</div>
+						<div class="resources">
+							<div class="ui_xp">
+								<img src="https://assets.codepen.io/217233/ktkXpIxon.png" />
+								{{ xp }}xp
+							</div>
+						</div>
+					</div>
+					<div class="game_inner__left">
+						<div class="buttons">
+							<img
+								:class="{'off': !audioController.sfxOn}"
+								@click="audioController.sfxOn = !audioController.sfxOn"
+								src="https://assets.codepen.io/217233/ktkSfxButton.png"
+							/>
+							<img
+								:class="{'off': muteBg}"
+								@click="toggleBg()"
+								src="https://assets.codepen.io/217233/ktkBgButton.png"
+							/>
+						</div>
+						<div class="logo">
+							<img src="https://assets.codepen.io/217233/ktkLogo.png" />
+						</div>
+						<div class="timer">
+							<img src="https://assets.codepen.io/217233/ktkTimerBg.png" />
+							<div class="timer_inner">
+								<div class="minutes">{{ minutes }}</div>
+								<div class="seconds">{{ seconds }}</div>
+								<div class="ms">{{ ms }}</div>
+							</div>
+						</div>
+						<div class="ui">
+							<div class="ui_progress">
+								<div class="ui_progress__stage">STAGE {{ stage }}</div>
+								<div class="ui_progress__bar">
+									<div
+										:style="{width: `${((500 / enemiesPerStage) * (enemiesDefeated + 1)) - ((500 / enemiesPerStage) / 2)}px`}"
+										class="inner"
+									></div>
+									<div class="outer"></div>
 								</div>
-								<h2>招生</h2>
-								<p>东京都市日本语学校在中国国内的招生业务。</p>
-							</div>
-							<div class="col-md-4 wp2 delay-05s">
-								<div class="icon">
-									<i class="fa fa-send shadow"></i>
+								<div class="ui_progress__icons">
+									<div
+										:key="enemies"
+										class="icon"
+										v-for="(enemies, index) in enemiesPerStage"
+									>
+										<div
+											:class="{'complete': index < enemiesDefeated, 'active': index == enemiesDefeated}"
+											class="icon_bg"
+										></div>
+									</div>
 								</div>
-								<h2>留学手续代办</h2>
-								<p>
-									对日本人以及外国留学生的国内外留学地的介绍及留学手续的代办业务
-								</p>
-							</div>
-							<div class="col-md-4 wp2 delay-1s">
-								<div class="icon">
-									<i class="fa fa-heart shadow"></i>
-								</div>
-								<h2>教学</h2>
-								<p>开设中国语会话教室，日常用语、旅行用语的会话。</p>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="text-center" id="responsive">
-			<div class="container-fluid nopadding responsive-services">
-				<div class="wrapper">
-					<div class="iphone">
-						<div class="wp3"></div>
-					</div>
-					<div class="fluid-white"></div>
-				</div>
-				<div class="container designs">
-					<div class="row">
-						<div class="col-md-5 col-md-offset-7">
-							<div id="servicesSlider">
-								<ul class="slides">
-									<li>
-										<h1 class="arrow">合作伙伴</h1>
-										<p>东京都市日本语学校</p>
-										<p>北京瀛科新创网络科技有限公司</p>
-										<p>武汉飞舞时光艺术传播有限公司</p>
-										<p>中国通俗文艺研究会</p>
-									</li>
-									<li>
-										<h1 class="arrow">公司地址</h1>
-										<p>日本东京都三鷹市大沢3丁目10-50</p>
-									</li>
-								</ul>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="swag text-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<h1>德尚<span>日语学习</span></h1>
-						<a href="#portfolio" class="down-arrow-btn"
-							><i class="fa fa-chevron-down"></i
-						></a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="portfolio text-center section-padding" id="portfolio">
-			<div class="container">
-				<div class="row">
-					<div id="portfolioSlider">
-						<ul class="slides">
-							<li>
-								<div class="col-md-4 wp4">
-									<div class="overlay-effect effects clearfix">
-										<div class="img">
-											<img src="img/04.jpg" alt="Portfolio Item" />
-											<div class="overlay">
-												<a href="#" class="expand"
-													><i class="fa fa-search"></i><br />View More</a
-												>
-												<a class="close-overlay hidden">x</a>
-											</div>
+						<div class="center">
+							<div class="characters">
+								<div :class="{'run': stageComplete}" class="player">
+									<div class="stats">
+										<div class="ui_strength">
+											<img
+												src="https://assets.codepen.io/217233/ktkStrengthIcon.png"
+											/>
+											{{ strength }} STR
+											<br />
+										</div>
+										<div class="ui_intelligence">
+											<img
+												src="https://assets.codepen.io/217233/ktkKnowledgeIcon.png"
+											/>
+											{{ intelligence }} INT
+										</div>
+										<div class="ui_speed">
+											<img
+												src="https://assets.codepen.io/217233/ktkSpeedIcon.png"
+											/>
+											{{ speed }} SPD
 										</div>
 									</div>
-									<h2>01</h2>
-									<p>
-										和年轻人一起学习活力无限
-									</p>
+									<div
+										:class="{'pressed': pressed}"
+										class="player_sprite"
+									></div>
 								</div>
-								<div class="col-md-4 wp4 delay-05s">
-									<div class="overlay-effect effects clearfix">
-										<div class="img">
-											<img src="img/05.jpg" alt="Portfolio Item" />
-											<div class="overlay">
-												<a href="#" class="expand"
-													><i class="fa fa-search"></i><br />View More</a
-												>
-												<a class="close-overlay hidden">x</a>
-											</div>
-										</div>
+								<div :class="{'run': stageComplete}" class="enemy">
+									<div
+										:class="{'pressed': pressed, 'killed' : enemyKilled, 'boss' : boss}"
+										:style="{filter: `hue-rotate(${80 * (stage - 1)}deg)`}"
+										class="enemy_sprite"
+									></div>
+									<div :class="{'pressed': pressed}" class="enemy_hit">
+										{{ damage }}
 									</div>
-									<h2>02</h2>
-									<p>
-									欢迎和我一样对日本文化感兴趣的朋友，无论年龄大小想来日本留学就联系我们
-									</p>
-								</div>
-								<div class="col-md-4 wp4 delay-1s">
-									<div class="overlay-effect effects clearfix">
-										<div class="img">
-											<img src="img/06.jpg" alt="Portfolio Item" />
-											<div class="overlay">
-												<a href="#" class="expand"
-													><i class="fa fa-search"></i><br />View More</a
-												>
-												<a class="close-overlay hidden">x</a>
-											</div>
-										</div>
+									<div :class="{'killed': enemyKilled}" class="enemy_xp">
+										<img src="https://assets.codepen.io/217233/ktkXpIxon.png" />
+										{{ xpGained }}xp
 									</div>
-									<h2>03</h2>
-									<p>
-										介绍中国文化。帮助学习中文的日本朋友尽快掌握基本日常用语
-									</p>
+									<div class="enemy_health">
+										<div class="enemy_health_stats">
+											<div class="name">{{ enemy.name }}</div>
+											<div class="level">HP: {{ enemy.health }}</div>
+										</div>
+										<div
+											:style="{width: `${100 * (enemy.health / enemy.initHealth)}%`}"
+											class="enemy_health_inner"
+										></div>
+									</div>
 								</div>
-							</li>
-						</ul>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-		</section>
-		<div class="ignite-cta text-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<a class="ignite-btn">来德尚， 向往未来</a>
+					<div class="game_inner__right" v-if="shoppingPhase">
+						<div class="timer">
+							<img src="https://assets.codepen.io/217233/ktkTimerBg.png" />
+							<div class="timer_inner">
+								<div class="minutes">{{ minutes }}</div>
+								<div class="seconds">{{ seconds }}</div>
+								<div class="ms">{{ ms }}</div>
+							</div>
+						</div>
+						<p>将您的金币和经验用于升级</p>
+						<div class="xp">
+							<img src="https://assets.codepen.io/217233/ktkXpIxon.png" />
+							{{ xp }}xp
+						</div>
+						<div class="upgrades">
+							<div
+								:key="upgrades.name"
+								class="upgrades_upgrade"
+								v-for="(upgrade, index) in upgrades"
+							>
+								<h2>
+									{{ index != 0 ? upgrade.type != upgrades[index - 1].type ?
+									upgrade.type : '' : 'Skills' }}
+								</h2>
+								<div
+									:class="{'max' : upgrade.level > upgrade.maxLevel, 'available': upgrade.type == 'stat' ? xp >= upgrade.cost : gold >= upgrade.cost, 'bought': upgrade.bought}"
+									@click='buy(index, upgrade.type, upgrade.stat);audioController.play("upgrade")'
+									@mouseenter='audioController.play("hover")'
+									class="upgrade"
+								>
+									<div class="name">{{ upgrade.names }}</div>
+									<div class="description">{{ upgrade.descriptions }}</div>
+									<div class="cost">
+										Cost: {{ upgrade.cost }} {{ upgrade.type == "stat" ? 'xp' :
+										'gold' }}
+									</div>
+									<div class="effect">
+										+{{ upgrade.type == "stat" ? upgrade.increment :
+										upgrade.damage }} {{ upgrade.metric }}
+									</div>
+									<div class="level" v-if="upgrade.type == 'stat'">
+										Level: {{ upgrade.level }}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div @click="exitShoppingPhase" class="nextPhase">下一关</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<section
-			class="dark-bg text-center section-padding contact-wrap"
-			id="contact"
-		>
-			<a href="#top" class="up-btn"><i class="fa fa-chevron-up"></i></a>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h1 class="arrow">Drop us a line</h1>
-					</div>
-				</div>
-				<div class="row contact-details">
-					<div class="col-md-4">
-						<div class="light-box box-hover">
-							<h2><i class="fa fa-map-marker"></i><span>Address</span></h2>
-							<p>日本东京都三鷹市大沢3丁目10-50</p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="light-box box-hover">
-							<h2><i class="fa fa-mobile"></i><span>Phone</span></h2>
-							<p>+86 070-8981-5328</p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="light-box box-hover">
-							<h2><i class="fa fa-paper-plane"></i><span>Email</span></h2>
-							<p><a href="#">yaohaixia77@gmail.com</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="social-buttons">
-							<li>
-								<a href="#" class="social-btn"
-									><i class="fa fa-dribbble"></i
-								></a>
-							</li>
-							<li>
-								<a href="#" class="social-btn"><i class="fa fa-twitter"></i></a>
-							</li>
-							<li>
-								<a href="#" class="social-btn"
-									><i class="fa fa-envelope"></i
-								></a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</section>
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<ul class="legals">
-							<li><a href="#">De Shang</a></li>
-							<li><a href="#">Legals</a></li>
-						</ul>
-					</div>
-					<div class="col-md-6 credit">
-						<p>
-							<em><a target="_blank" href="#">Copyright © 2023 - 德尚 </a></em>
-						</p>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/waypoints.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/scripts.js"></script>
-		<script src="js/jquery.flexslider.js"></script>
-		<script src="js/modernizr.js"></script>
 	</body>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.min.js"></script>
+	<script src="js/script.js"></script>
 </html>
