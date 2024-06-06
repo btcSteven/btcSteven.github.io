@@ -316,6 +316,7 @@ body {
 	padding: 10px;
 	position: absolute;
 	right: 0px;
+	z-index:5;
 }
 .game_inner__buttons.buttons img {
 	width: 32px;
