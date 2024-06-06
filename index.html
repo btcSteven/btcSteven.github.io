@@ -89,19 +89,19 @@
 							</div>
 						</div>
 					</div>
+					<div class="game_inner__buttons buttons">
+						<img
+							:class="{'off': !audioController.sfxOn}"
+							@click="audioController.sfxOn = !audioController.sfxOn"
+							src="https://assets.codepen.io/217233/ktkSfxButton.png"
+						/>
+						<img
+							:class="{'off': muteBg}"
+							@click="toggleBg()"
+							src="https://assets.codepen.io/217233/ktkBgButton.png"
+						/>
+					</div>
 					<div class="game_inner__left">
-						<div class="buttons">
-							<img
-								:class="{'off': !audioController.sfxOn}"
-								@click="audioController.sfxOn = !audioController.sfxOn"
-								src="https://assets.codepen.io/217233/ktkSfxButton.png"
-							/>
-							<img
-								:class="{'off': muteBg}"
-								@click="toggleBg()"
-								src="https://assets.codepen.io/217233/ktkBgButton.png"
-							/>
-						</div>
 						<div class="logo">
 							<img src="https://assets.codepen.io/217233/ktkLogo.png" />
 						</div>

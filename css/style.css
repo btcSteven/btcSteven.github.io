@@ -312,22 +312,23 @@ body {
 	width: calc(100%);
 	height: 100vh;
 }
-.game_inner__left .buttons {
+.game_inner__buttons.buttons {
 	float: right;
 	padding: 20px;
 }
-.game_inner__left .buttons img {
+.game_inner__buttons.buttons img {
 	width: 32px;
 	float: left;
 	margin-left: 12px;
 	cursor: pointer;
 }
-.game_inner__left .buttons img.off {
+.game_inner__buttons.buttons img.off {
 	opacity: 0.3;
 }
 .game_inner__left .logo {
 	padding: 50px;
 	float: left;
+	display: none;
 }
 .game_inner__left .ui {
 	width: 100%;
@@ -370,7 +371,7 @@ body {
 	background: url("https://assets.codepen.io/217233/ktkProgressOuter.png");
 	height: 12px;
 	width: 100%;
-	background-size: 500px 12px;
+	background-size: 100% 12px;
 	position: absolute;
 	top: 8px;
 }
@@ -434,7 +435,7 @@ body {
 	animation: attack 0.15s steps(3, end);
 }
 .game_inner__left .center .characters {
-	width: 400px;
+	width: 100%;
 	margin: 80px auto;
 }
 .game_inner__left .center .characters .stand {
