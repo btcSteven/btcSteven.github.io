@@ -313,8 +313,9 @@ body {
 	height: 100vh;
 }
 .game_inner__buttons.buttons {
-	float: right;
-	padding: 20px;
+	padding: 10px;
+	position: absolute;
+	right: 0px;
 }
 .game_inner__buttons.buttons img {
 	width: 32px;
@@ -338,7 +339,7 @@ body {
 	margin-bottom: 7px;
 }
 .game_inner__left .ui_progress {
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
 	text-align: left;
 	position: absolute;
