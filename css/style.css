@@ -132,7 +132,7 @@ body {
 	right: 0;
 	margin: auto;
 	top: 50%;
-	width: 680px;
+	width: 85%;
 	transform: translateY(-50%);
 	text-align: center;
 	transition: all 0.3s;
@@ -150,7 +150,7 @@ body {
 }
 .game_intro__inner .dialogue {
 	float: left;
-	width: 60%;
+	width: 80%;
 	background: black;
 	color: white;
 	border-radius: 20px;
@@ -184,7 +184,7 @@ body {
 	position: absolute;
 	z-index: 1;
 	cursor: pointer;
-	right: 20px;
+	left: 20px;
 	font-size: 10px;
 	top: 175px;
 	transition: all 0.3s;
@@ -211,7 +211,7 @@ body {
 	pointer-events: none;
 }
 .game_intro__inner img:nth-of-type(1) {
-	width: 400px;
+	width: 300px;
 	-ms-interpolation-mode: nearest-neighbor;
 	image-rendering: -moz-crisp-edges;
 	image-rendering: pixelated;
@@ -314,7 +314,7 @@ body {
 }
 .game_inner__left .buttons {
 	float: right;
-	padding: 50px;
+	padding: 20px;
 }
 .game_inner__left .buttons img {
 	width: 32px;
@@ -337,11 +337,11 @@ body {
 	margin-bottom: 7px;
 }
 .game_inner__left .ui_progress {
-	width: 500px;
+	width: 80%;
 	margin: 0 auto;
 	text-align: left;
 	position: absolute;
-	top: calc(50% - 300px);
+	top: 80px;
 	left: 0;
 	right: 0;
 	margin: auto;
@@ -358,7 +358,7 @@ body {
 	background: url("https://assets.codepen.io/217233/ktkProgressInner.png");
 	height: 7px;
 	width: calc(100% - 6px);
-	background-size: 494px 7px;
+	background-size: 100% 7px;
 	position: absolute;
 	top: 10px;
 	z-index: 1;
@@ -1422,7 +1422,7 @@ body {
 }
 .game_inner__right {
 	float: right;
-	max-width: 100%;
+	max-width: 90%;
 	position: fixed;
 	width: 720px;
 	background: #160917;
@@ -1540,11 +1540,11 @@ body {
 }
 
 .timer {
-	width: 128px;
+	width: 100px;
 	margin: 0 auto;
 	text-align: left;
 	position: absolute;
-	top: calc(50% - 400px);
+	top: 10px;
 	left: 4px;
 	right: 0;
 	font-size: 14px;
@@ -1554,10 +1554,12 @@ body {
 	position: relative;
 	top: -40px;
 	text-align: center;
+	white-space: nowrap;
+	padding-left: 15px;
 }
 .timer_inner div {
 	display: inline-block;
-	width: 28px;
+	width: 25px;
 	position: relative;
 	margin: 0 3px 0;
 }
